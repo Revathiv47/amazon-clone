@@ -1,0 +1,53 @@
+import React from "react";
+import './Header.css';
+import {Link} from "react-router-dom";
+import SearchIcon from "@material-ui/icons/Search";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import Home from './Home.js';
+import {useStateValue} from "./StateProvider";
+
+function Header() {
+  const [{basket}, dispatch] = useStateValue();
+  return (
+       <div>
+               <nav className="header">
+         <h1>Shopping</h1>
+         <div className="header__search">
+          <input type="text" className="header__searchInput" />
+         <SearchIcon className="header__searchIcon" /> 
+         </div>
+         <div className="header__nav">
+         <Link to="/" className="header__link">
+           <div className="header__option">
+             <span className="header__optionLineOne">Hello Riya</span>
+             <span className="header__optionLinetwo">Sign In</span>
+           </div>
+           </Link>
+           <Link to="/" className="header__link">
+           <div className="header__option">
+             <span className="header__optionLineOne">Return</span>
+             <span className="header__optionLinetwo">& Orders</span>
+           </div>
+           </Link>
+
+           <Link to="/checkout" className="header__link">
+             <div className="header__optionBasket">
+               <ShoppingBasketIcon />
+               <span className="header__optionLineTwo header__basketCount">0</span>
+
+             </div>
+           </Link>
+           
+           
+         </div>
+        
+       </nav>
+       <Home />
+       </div>
+ 
+    
+
+  )
+}
+
+export default Header
